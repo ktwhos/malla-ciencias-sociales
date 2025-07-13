@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,12 +49,46 @@
       color: #555;
       text-decoration: line-through;
     }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #cc548d;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      text-align: center;
+      max-width: 300px;
+      animation: pop 0.3s ease;
+    }
+    @keyframes pop {
+      from { transform: translate(-50%, -60%); opacity: 0; }
+      to   { transform: translate(-50%, -50%); opacity: 1; }
+    }
+    .popup h3 {
+      color: #5a189a;
+      margin-bottom: 1rem;
+    }
+    .popup button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #cc548d;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .popup button:hover {
+      background: #a93c70;
+    }
   </style>
 </head>
 <body>
   <h1>Malla Curricular - Ciencias Sociales</h1>
   <div class="semestres">
-    <!-- SEMESTRE 1 -->
     <div class="card">
       <h2>1º semestre</h2>
       <div class="materia">Historia Antigua</div>
@@ -65,7 +98,6 @@
       <div class="materia">Competencias Comunicativas I</div>
       <div class="materia">Inglés I</div>
     </div>
-    <!-- SEMESTRE 2 -->
     <div class="card">
       <h2>2º semestre</h2>
       <div class="materia">Historia Edad Media y Moderna</div>
@@ -75,7 +107,6 @@
       <div class="materia">Competencias Comunicativas II</div>
       <div class="materia">Inglés II</div>
     </div>
-    <!-- SEMESTRE 3 -->
     <div class="card">
       <h2>3º semestre</h2>
       <div class="materia">Historia Contemporánea</div>
@@ -84,7 +115,6 @@
       <div class="materia">Psicología del Aprendizaje</div>
       <div class="materia">Inglés III</div>
     </div>
-    <!-- SEMESTRE 4 -->
     <div class="card">
       <h2>4º semestre</h2>
       <div class="materia">Historia de América</div>
@@ -93,7 +123,6 @@
       <div class="materia">Sociología de la Educación</div>
       <div class="materia">Inglés IV</div>
     </div>
-    <!-- SEMESTRE 5 -->
     <div class="card">
       <h2>5º semestre</h2>
       <div class="materia">Historia de Colombia</div>
@@ -102,7 +131,6 @@
       <div class="materia">Currículo y Gestión Escolar</div>
       <div class="materia">Electiva Libre</div>
     </div>
-    <!-- SEMESTRE 6 -->
     <div class="card">
       <h2>6º semestre</h2>
       <div class="materia">Historia del Caribe y Córdoba</div>
@@ -111,7 +139,6 @@
       <div class="materia">Investigación Social I</div>
       <div class="materia">Práctica Pedagógica I</div>
     </div>
-    <!-- SEMESTRE 7 -->
     <div class="card">
       <h2>7º semestre</h2>
       <div class="materia">Investigación Social II</div>
@@ -120,7 +147,6 @@
       <div class="materia">Práctica Pedagógica II</div>
       <div class="materia">Electiva de Carrera I</div>
     </div>
-    <!-- SEMESTRE 8 -->
     <div class="card">
       <h2>8º semestre</h2>
       <div class="materia">Filosofía Antigua</div>
@@ -129,7 +155,6 @@
       <div class="materia">Práctica Pedagógica III</div>
       <div class="materia">Electiva de Carrera II</div>
     </div>
-    <!-- SEMESTRE 9 -->
     <div class="card">
       <h2>9º semestre</h2>
       <div class="materia">Filosofía Moderna</div>
@@ -137,7 +162,6 @@
       <div class="materia">Práctica Docente I</div>
       <div class="materia">Electiva de Profundización</div>
     </div>
-    <!-- SEMESTRE 10 -->
     <div class="card">
       <h2>10º semestre</h2>
       <div class="materia">Filosofía Contemporánea</div>
@@ -146,11 +170,14 @@
       <div class="materia">Sistematización de la Práctica</div>
       <div class="materia">Requisito de Grado</div>
     </div>
-  </div>
-
-  <script>
+  </div>  <div class="popup" id="popup">
+    <h3>🎓 The student becomes the teacher.</h3>
+    <p>¡Has marcado toda tu malla! 🌸</p>
+    <button onclick="document.getElementById('popup').style.display='none'">Aceptar</button>
+  </div>  <script>
     document.addEventListener("DOMContentLoaded", () => {
       const materias = document.querySelectorAll(".materia");
+
       materias.forEach((materia, index) => {
         const estado = localStorage.getItem("materia_" + index);
         if (estado === "completada") {
@@ -164,9 +191,18 @@
           } else {
             localStorage.removeItem("materia_" + index);
           }
+          verificarFinal();
         });
       });
+
+      function verificarFinal() {
+        const todas = Array.from(materias).every(m => m.classList.contains("completada"));
+        if (todas) {
+          document.getElementById("popup").style.display = "block";
+        }
+      }
+
+      verificarFinal();
     });
-  </script>
-</body>
-</html>
+  </script></body>
+                                      </html>
