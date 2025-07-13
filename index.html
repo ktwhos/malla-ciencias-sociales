@@ -1,70 +1,154 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Curricular - Ciencias Sociales</title>
   <style>
     body {
+      background: #fffafc;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f9;
       margin: 0;
       padding: 2rem;
     }
     h1 {
       text-align: center;
-      color: #333;
+      color: #cc548d;
     }
-    .semestre {
-      background-color: white;
+    .semestres {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #ffe5ef;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+    .card h2 {
+      color: #a93c70;
+      margin-top: 0;
+    }
+    .materia {
+      background: white;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .semestre h2 {
-      color: #5a189a;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    li {
       margin: 0.5rem 0;
+      border-left: 5px solid #cc548d;
     }
-    input[type="checkbox"] {
-      margin-right: 10px;
+    .completada {
+      background: #d3f9d8;
+      border-left: 5px solid #4caf50;
+      text-decoration: line-through;
+      color: gray;
     }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular - Licenciatura en Ciencias Sociales</h1>
+  <h1>Malla Curricular - Ciencias Sociales</h1>
+  <div class="semestres"><!-- SEMESTRE 1 -->
+<div class="card">
+  <h2>1º semestre</h2>
+  <div class="materia">Historia Antigua</div>
+  <div class="materia">Geografía Física</div>
+  <div class="materia">Introducción a las Ciencias Sociales</div>
+  <div class="materia">Psicopedagogía</div>
+  <div class="materia">Competencias Comunicativas I</div>
+  <div class="materia">Inglés I</div>
+</div>
 
-  <div class="semestre">
-    <h2>Semestre 1</h2>
-    <ul>
-      <li><input type="checkbox" />Historia Antigua</li>
-      <li><input type="checkbox" />Geografía Física</li>
-      <li><input type="checkbox" />Introducción a las Ciencias Sociales</li>
-      <li><input type="checkbox" />Psicopedagogía</li>
-      <li><input type="checkbox" />Competencias Comunicativas I</li>
-      <li><input type="checkbox" />Inglés I</li>
-    </ul>
+<!-- SEMESTRE 2 -->
+<div class="card">
+  <h2>2º semestre</h2>
+  <div class="materia">Historia Edad Media y Moderna</div>
+  <div class="materia">Dinámicas Espaciales y Poblacionales</div>
+  <div class="materia">Sociología General</div>
+  <div class="materia">Psicología Evolutiva</div>
+  <div class="materia">Competencias Comunicativas II</div>
+  <div class="materia">Inglés II</div>
+</div>
+
+<!-- SEMESTRE 3 -->
+<div class="card">
+  <h2>3º semestre</h2>
+  <div class="materia">Historia Contemporánea</div>
+  <div class="materia">Paisaje y Medio Ambiente</div>
+  <div class="materia">Economía Política</div>
+  <div class="materia">Psicología del Aprendizaje</div>
+  <div class="materia">Inglés III</div>
+</div>
+
+<!-- SEMESTRE 4 -->
+<div class="card">
+  <h2>4º semestre</h2>
+  <div class="materia">Historia de América</div>
+  <div class="materia">Geografía de Colombia</div>
+  <div class="materia">Antropología</div>
+  <div class="materia">Sociología de la Educación</div>
+  <div class="materia">Inglés IV</div>
+</div>
+
+<!-- SEMESTRE 5 -->
+<div class="card">
+  <h2>5º semestre</h2>
+  <div class="materia">Historia de Colombia</div>
+  <div class="materia">Estudios Culturales</div>
+  <div class="materia">Tendencias Pedagógicas y Didácticas</div>
+  <div class="materia">Currículo y Gestión Escolar</div>
+  <div class="materia">Electiva Libre</div>
+</div>
+
+<!-- SEMESTRE 6 -->
+<div class="card">
+  <h2>6º semestre</h2>
+  <div class="materia">Historia del Caribe y Córdoba</div>
+  <div class="materia">Territorio y Región</div>
+  <div class="materia">Procesos Evaluativos</div>
+  <div class="materia">Investigación Social I</div>
+  <div class="materia">Práctica Pedagógica I</div>
+</div>
+
+<!-- SEMESTRE 7 -->
+<div class="card">
+  <h2>7º semestre</h2>
+  <div class="materia">Investigación Social II</div>
+  <div class="materia">Legislación y Política Educativa</div>
+  <div class="materia">Didáctica General</div>
+  <div class="materia">Práctica Pedagógica II</div>
+  <div class="materia">Electiva de Carrera I</div>
+</div>
+
+<!-- SEMESTRE 8 -->
+<div class="card">
+  <h2>8º semestre</h2>
+  <div class="materia">Filosofía Antigua</div>
+  <div class="materia">Investigación Social III</div>
+  <div class="materia">Didáctica de las Ciencias Sociales I</div>
+  <div class="materia">Práctica Pedagógica III</div>
+  <div class="materia">Electiva de Carrera II</div>
+</div>
+
+<!-- SEMESTRE 9 -->
+<div class="card">
+  <h2>9º semestre</h2>
+  <div class="materia">Filosofía Moderna</div>
+  <div class="materia">Didáctica de las Ciencias Sociales II</div>
+  <div class="materia">Práctica Docente I</div>
+  <div class="materia">Electiva de Profundización</div>
+</div>
+
+<!-- SEMESTRE 10 -->
+<div class="card">
+  <h2>10º semestre</h2>
+  <div class="materia">Filosofía Contemporánea</div>
+  <div class="materia">Ética</div>
+  <div class="materia">Práctica Docente II</div>
+  <div class="materia">Sistematización de la Práctica</div>
+  <div class="materia">Requisito de Grado</div>
+</div>
+
   </div>
-
-  <div class="semestre">
-    <h2>Semestre 2</h2>
-    <ul>
-      <li><input type="checkbox" />Historia de la Edad Media y Moderna</li>
-      <li><input type="checkbox" />Dinámicas Espaciales y Poblacionales</li>
-      <li><input type="checkbox" />Sociología General</li>
-      <li><input type="checkbox" />Psicología Evolutiva</li>
-      <li><input type="checkbox" />Competencias Comunicativas II</li>
-      <li><input type="checkbox" />Inglés II</li>
-    </ul>
-  </div>
-
-  <!-- Puedes seguir agregando los demás semestres luego -->
-
 </body>
   </html>
