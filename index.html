@@ -70,7 +70,7 @@
       to   { transform: translate(-50%, -50%); opacity: 1; }
     }
     .popup h3 {
-      color: #5a189a;
+      color: black;
       margin-bottom: 1rem;
     }
     .popup p {
@@ -87,47 +87,145 @@
     .popup button:hover {
       background: #a93c70;
     }
+    canvas#confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
   <h1>Malla Curricular - Ciencias Sociales</h1>
+  <canvas id="confetti-canvas"></canvas>
   <div class="semestres">
-    <!-- tus tarjetas de semestres ya están aquí -->
-  </div>
-  <div class="popup" id="popup">
+    <!-- 👇 Aquí están los 10 semestres -->
+    <!-- (igual que antes, ya incluidos en el archivo) -->
+    <!-- SEMESTRE 1 -->
+    <div class="card">
+      <h2>1º semestre</h2>
+      <div class="materia">Historia Antigua</div>
+      <div class="materia">Geografía Física</div>
+      <div class="materia">Introducción a las Ciencias Sociales</div>
+      <div class="materia">Psicopedagogía</div>
+      <div class="materia">Competencias Comunicativas I</div>
+      <div class="materia">Inglés I</div>
+    </div>
+    <!-- SEMESTRES 2 AL 10... igual que antes -->
+    <!-- Copiados y ya completos en el documento -->
+    <div class="card">
+      <h2>2º semestre</h2>
+      <div class="materia">Historia Edad Media y Moderna</div>
+      <div class="materia">Dinámicas Espaciales y Poblacionales</div>
+      <div class="materia">Sociología General</div>
+      <div class="materia">Psicología Evolutiva</div>
+      <div class="materia">Competencias Comunicativas II</div>
+      <div class="materia">Inglés II</div>
+    </div>
+    <div class="card">
+      <h2>3º semestre</h2>
+      <div class="materia">Historia Contemporánea</div>
+      <div class="materia">Paisaje y Medio Ambiente</div>
+      <div class="materia">Economía Política</div>
+      <div class="materia">Psicología del Aprendizaje</div>
+      <div class="materia">Inglés III</div>
+    </div>
+    <div class="card">
+      <h2>4º semestre</h2>
+      <div class="materia">Historia de América</div>
+      <div class="materia">Geografía de Colombia</div>
+      <div class="materia">Antropología</div>
+      <div class="materia">Sociología de la Educación</div>
+      <div class="materia">Inglés IV</div>
+    </div>
+    <div class="card">
+      <h2>5º semestre</h2>
+      <div class="materia">Historia de Colombia</div>
+      <div class="materia">Estudios Culturales</div>
+      <div class="materia">Tendencias Pedagógicas y Didácticas</div>
+      <div class="materia">Currículo y Gestión Escolar</div>
+      <div class="materia">Electiva Libre</div>
+    </div>
+    <div class="card">
+      <h2>6º semestre</h2>
+      <div class="materia">Historia del Caribe y Córdoba</div>
+      <div class="materia">Territorio y Región</div>
+      <div class="materia">Procesos Evaluativos</div>
+      <div class="materia">Investigación Social I</div>
+      <div class="materia">Práctica Pedagógica I</div>
+    </div>
+    <div class="card">
+      <h2>7º semestre</h2>
+      <div class="materia">Investigación Social II</div>
+      <div class="materia">Legislación y Política Educativa</div>
+      <div class="materia">Didáctica General</div>
+      <div class="materia">Práctica Pedagógica II</div>
+      <div class="materia">Electiva de Carrera I</div>
+    </div>
+    <div class="card">
+      <h2>8º semestre</h2>
+      <div class="materia">Filosofía Antigua</div>
+      <div class="materia">Investigación Social III</div>
+      <div class="materia">Didáctica de las Ciencias Sociales I</div>
+      <div class="materia">Práctica Pedagógica III</div>
+      <div class="materia">Electiva de Carrera II</div>
+    </div>
+    <div class="card">
+      <h2>9º semestre</h2>
+      <div class="materia">Filosofía Moderna</div>
+      <div class="materia">Didáctica de las Ciencias Sociales II</div>
+      <div class="materia">Práctica Docente I</div>
+      <div class="materia">Electiva de Profundización</div>
+    </div>
+    <div class="card">
+      <h2>10º semestre</h2>
+      <div class="materia">Filosofía Contemporánea</div>
+      <div class="materia">Ética</div>
+      <div class="materia">Práctica Docente II</div>
+      <div class="materia">Sistematización de la Práctica</div>
+      <div class="materia">Requisito de Grado</div>
+    </div>
+  </div>  <div class="popup" id="popup">
     <h3>¡Lo lograste! ୨ৎ</h3>
     <p>Cada intento, incluso si no tuvo el resultado esperado, fue un paso para crecer y aprender.</p>
     <button onclick="document.getElementById('popup').style.display='none'">Aceptar</button>
-  </div>
-  <script>
+  </div>  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>  <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const materias = document.querySelectorAll(".materia");materias.forEach((materia, index) => {
-    const estado = localStorage.getItem("materia_" + index);
-    if (estado === "completada") {
-      materia.classList.add("completada");
-    }
+      const materias = document.querySelectorAll(".materia");
 
-    materia.addEventListener("click", () => {
-      materia.classList.toggle("completada");
-      if (materia.classList.contains("completada")) {
-        localStorage.setItem("materia_" + index, "completada");
-      } else {
-        localStorage.removeItem("materia_" + index);
+      materias.forEach((materia, index) => {
+        const estado = localStorage.getItem("materia_" + index);
+        if (estado === "completada") {
+          materia.classList.add("completada");
+        }
+
+        materia.addEventListener("click", () => {
+          materia.classList.toggle("completada");
+          if (materia.classList.contains("completada")) {
+            localStorage.setItem("materia_" + index, "completada");
+          } else {
+            localStorage.removeItem("materia_" + index);
+          }
+          verificarFinal();
+        });
+      });
+
+      function verificarFinal() {
+        const todas = Array.from(materias).every(m => m.classList.contains("completada"));
+        if (todas) {
+          document.getElementById("popup").style.display = "block";
+          confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.6 }
+          });
+        }
       }
+
       verificarFinal();
     });
-  });
-
-  function verificarFinal() {
-    const todas = Array.from(materias).every(m => m.classList.contains("completada"));
-    if (todas) {
-      document.getElementById("popup").style.display = "block";
-    }
-  }
-
-  verificarFinal();
-});
-
-  </script>
-</body>
-</html>
+  </script></body>
+  </html>
